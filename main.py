@@ -1,7 +1,6 @@
 import requests
 import os
 from rich import print
-#from library import list
 
 print("[bold red]Hello Reader!! Welcome[/bold red]")
 print("⚠️ Disclaimer: This program  uses project gutenberg as ref so enter a book name avaliabel on this project")
