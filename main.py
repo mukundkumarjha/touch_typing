@@ -8,6 +8,9 @@ print("⚠️ Disclaimer: This program  uses project gutenberg as ref so enter a
 book_name = input("Please enter book name:")
 
 
+_cache = {}
+
+
 def save_book(url, filename, subfolder="library"):
     current_dir = os.getcwd()
     folder_path = os.path.join(current_dir, subfolder)
@@ -17,16 +20,24 @@ def save_book(url, filename, subfolder="library"):
     if response.status_code == 200:
         with open(file_path, "w", encoding= "utf-8") as f:
             f.write(response.text)
+        _cache[filename] = 0
     else:
         print(f"Failed to download book! {response.status_code}")
 
 
 
+def generate_text(book, ptr):
+
+
+
+
+
+
 def find(book):
-   # if book in list:
-   #     generate_text(book)
-   #     return
-    query = book.replace(" ", "+")
+    if book in _cache:
+        generate_text(book, _cache.get(book))
+        return 
+    query = book_name.replace(" ", "+")
     url = f"https://gutendex.com/books/?search={query}"
     response = requests.get(url)
     data = response.json()
